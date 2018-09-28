@@ -64,7 +64,36 @@ while True:
 
     if int(goods_num) == 1: #泡面
         if len(pm_rack) >= 1:
-            break
+            buy_car.append(pm_rack[len(pm_rack) - 1])
+            pm_rack.pop()
+        else:
+            print("亲！泡面卖完了！小二正在煮面。。。")
+    elif int(goods_num) == 2:  # 榨菜
+        if len(zc_rack) >= 1:
+            buy_car.append(zc_rack[len(zc_rack) - 1])
+            zc_rack.pop()
+        else:
+            print("亲！榨菜卖完了！小二正在疯狂的切榨菜。。。")
+    elif int(goods_num) == 3:  # 香肠
+        if len(xc_rack) >= 1:
+            buy_car.append(xc_rack[len(xc_rack) - 1])
+            xc_rack.pop()
+        else:
+            print("亲！香肠卖完了！小二正在拼命的剁肉。。。")
+    else:
+        print("亲！您输入的商品还在火星，请输入在售的商品编号！")
+        continue
 
+    if_buy = input("请输入y或者n选择是否继续购物:")
+    if if_buy == "n":  # n表示不再继续购物，程序退出
+        if len(buy_car) > 0:
+            print("您的购物车商品如下：", buy_car)
+            total_money = buy_car_account(buy_car)
+            print("购买的商品总价:{}".format(total_money))
+            # 购物车清空
+            buy_car = []
+        else:
+            print("您没有购买任何商品！")
+        break
 
-
+print("欢迎下次光临，拜拜！")

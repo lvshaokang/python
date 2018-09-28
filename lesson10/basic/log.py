@@ -1,6 +1,8 @@
 import datetime
 import csv
 
+import os
+
 
 class LogManageSys:
     def __init__(self):
@@ -34,3 +36,15 @@ class LogManageSys:
     def get_log_time(self, format):
         log_time = datetime.datetime.now().strftime(format)
         return log_time
+
+    def read_log_csv(self, file_path):
+        datas = []
+        with open(file_path, "r", encoding="utf-8") as f:
+            reader = csv.reader(f)
+            for row in reader:
+                datas.append(row)
+        return datas
+
+    def list_dir_file(self, file_dir):
+        files = os.listdir(file_dir)
+        return files
